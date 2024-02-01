@@ -14,7 +14,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to CS371" />
+            android:text="Happy Birthday!"
+            android:textColor="#FF5722"
+            android:textColorLink="#FFFFFF"
+            android:textSize="34sp" />
     </LinearLayout>
 
     <LinearLayout
