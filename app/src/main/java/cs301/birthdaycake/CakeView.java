@@ -9,6 +9,10 @@ import android.view.SurfaceView;
 
 public class CakeView extends SurfaceView {
 
+    //instance variables
+
+    private CakeModel cakemodel;
+
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
@@ -45,6 +49,7 @@ public class CakeView extends SurfaceView {
 
         //This is essential or your onDraw method won't get called
         setWillNotDraw(false);
+        cakemodel = new CakeModel();
 
         //Setup our palette
         cakePaint.setColor(0xFFC755B5);  //violet-red
@@ -125,6 +130,10 @@ public class CakeView extends SurfaceView {
 
 
     }//onDraw
+
+    public CakeModel getCakeModel(){
+        return cakemodel;
+    }//CakeModel
 
 }//class CakeView
 
