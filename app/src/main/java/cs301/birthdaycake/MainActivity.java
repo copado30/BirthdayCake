@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
-        CakeView cakeView = this.findViewById(R.id.cakeview);
+
+        CakeView cakeView = this.findViewById(R.id.cakeview);//cakeview is taken from the
         CakeController cakeController = new CakeController(cakeView);
     }
     public void goodbye(View button){
