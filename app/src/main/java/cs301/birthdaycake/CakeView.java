@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class CakeView extends SurfaceView {
 
@@ -48,7 +49,7 @@ public class CakeView extends SurfaceView {
         super(context, attrs);
 
         //This is essential or your onDraw method won't get called
-        setWillNotDraw(false);
+        this.setWillNotDraw(false);
         cakemodel = new CakeModel();
 
         //Setup our palette
@@ -136,6 +137,8 @@ public class CakeView extends SurfaceView {
             int numCandlesPlus = numCandles+1;
             drawCandle(canvas, cakeLeft + cakeWidth * i / numCandlesPlus - candleWidth / numCandlesPlus, cakeTop);
         }
+
+
     }//onDraw
 
     public CakeModel getCakeModel(){
