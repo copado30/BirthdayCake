@@ -108,6 +108,11 @@ public class CakeView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas)
     {
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setTextSize(60);
+
+        canvas.drawText("" + cakemodel.touchX + "," + cakemodel.touchY,1600,820,paint);
         //top and bottom are used to keep a running tally as we progress down the cake layers
         float top = cakeTop;
         float bottom = cakeTop + frostHeight;
