@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class CakeView extends SurfaceView {
     //instance variables
 
     private CakeModel cakemodel;
+    private Balloon balloon; // reference to balloon object
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -45,8 +47,7 @@ public class CakeView extends SurfaceView {
 
     public static final float innerFlameRadius = 15.0f;
 
-    //Keep a Spot object for every touch the user makes
-    ArrayList<CheckerBoard> boxList = new ArrayList<CheckerBoard>();
+
 
     /**
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
@@ -56,8 +57,10 @@ public class CakeView extends SurfaceView {
         super(context, attrs);
 
         //This is essential or your onDraw method won't get called
-        setWillNotDraw(false);
+        this.setWillNotDraw(false);
         cakemodel = new CakeModel();
+
+        balloon = new Balloon(); //initialize the balloon object
 
         //Setup our palette
         cakePaint.setColor(0xFFCC0000);  //red velvet
@@ -71,8 +74,6 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
-        greenBox.setColor(Color.GREEN);
-        redBox.setColor(Color.RED);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -118,6 +119,11 @@ public class CakeView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas)
     {
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setTextSize(60);
+
+        canvas.drawText("" + cakemodel.touchX + "," + cakemodel.touchY,1600,820,paint);
         //top and bottom are used to keep a running tally as we progress down the cake layers
         float top = cakeTop;
         float bottom = cakeTop + frostHeight;
@@ -152,9 +158,22 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(cakemodel.x - 75.0f, cakemodel.y, cakemodel.x, cakemodel.y + 75.0f, redBox);
         canvas.drawRect(cakemodel.x, cakemodel.y - 75.0f, cakemodel.x + 75.0f, cakemodel.y, redBox);
 
+
+        //draw the balloon
+        balloon.draw(canvas);
+
+
     }//onDraw
+
+    public void setBalloonLocation(float x, float y){
+        balloon.setLocation(x, y);
+        //redraw
+        invalidate();
+    }
 
     public CakeModel getCakeModel(){
         return cakemodel;
     }//CakeModel
+
 }//class CakeView
+
