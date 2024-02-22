@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goodbye(View button){
 
-        Log.i("button","bye");
+        Log.i("button","Goodbye!");
 
     }
 }
