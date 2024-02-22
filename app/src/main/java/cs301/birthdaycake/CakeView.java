@@ -13,6 +13,7 @@ public class CakeView extends SurfaceView {
     //instance variables
 
     private CakeModel cakemodel;
+    private Balloon balloon; // reference to balloon object
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -51,6 +52,8 @@ public class CakeView extends SurfaceView {
         //This is essential or your onDraw method won't get called
         this.setWillNotDraw(false);
         cakemodel = new CakeModel();
+
+        balloon = new Balloon(); //initialize the balloon object
 
         //Setup our palette
         cakePaint.setColor(0xFFCC0000);  //red velvet
@@ -138,8 +141,17 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + cakeWidth * i / numCandlesPlus - candleWidth / numCandlesPlus, cakeTop);
         }
 
+        //draw the balloon
+        balloon.draw(canvas);
+
 
     }//onDraw
+
+    public void setBalloonLocation(float x, float y){
+        balloon.setLocation(x, y);
+        //redraw
+        invalidate();
+    }
 
     public CakeModel getCakeModel(){
         return cakemodel;
