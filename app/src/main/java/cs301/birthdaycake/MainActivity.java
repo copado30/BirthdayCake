@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         candleSeek.setOnSeekBarChangeListener(cakeController);
 
         cakeView.setOnTouchListener(cakeController);
-   }
+    }
     public void goodbye(View button){
 
-        Log.i("button","Goodbye");
+        Log.i("button","bye");
 
     }
 }
