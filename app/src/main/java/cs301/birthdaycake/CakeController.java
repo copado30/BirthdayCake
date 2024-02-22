@@ -59,7 +59,7 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         cakeModel.x = motionEvent.getX();
         cakeModel.y = motionEvent.getY();
 
-        cakeView.setBalloonLocation(cakeModel.touchX, cakeModel.touchY);
+        cakeView.setBalloonLocation(cakeModel.x, cakeModel.y);
 
         cakeView.invalidate();
 

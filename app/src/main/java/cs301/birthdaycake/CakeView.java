@@ -16,6 +16,7 @@ public class CakeView extends SurfaceView {
     //instance variables
 
     private CakeModel cakemodel;
+    private Balloon balloon;
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -152,7 +153,14 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(cakemodel.x - 75.0f, cakemodel.y, cakemodel.x, cakemodel.y + 75.0f, redBox);
         canvas.drawRect(cakemodel.x, cakemodel.y - 75.0f, cakemodel.x + 75.0f, cakemodel.y, redBox);
 
+        balloon.draw(canvas);
     }//onDraw
+
+    public void setBalloonLocation(float x, float y){
+
+        balloon.setLocation(x,y);
+        invalidate();
+    }
 
     public CakeModel getCakeModel(){
         return cakemodel;
