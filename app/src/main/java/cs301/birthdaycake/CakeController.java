@@ -19,9 +19,6 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     public CakeController(CakeView passedView ){
         cakeView = passedView;
         cakeModel = cakeView.getCakeModel();
-
-        // for drawing balloon on touch
-        cakeView.setOnTouchListener(this);
     }
 
     @Override
@@ -55,14 +52,12 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     }
 
     @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        cakeModel.touchX = motionEvent.getX();
-        cakeModel.touchY = motionEvent.getY();
-
-        cakeView.setBalloonLocation(cakeModel.touchX, cakeModel.touchY);
+    public boolean onTouch(View v, MotionEvent motionEvent) {
+        cakeModel.x = motionEvent.getX();
+        cakeModel.y = motionEvent.getY();
 
         cakeView.invalidate();
 
-        return true;
+        return false;
     }
 }
